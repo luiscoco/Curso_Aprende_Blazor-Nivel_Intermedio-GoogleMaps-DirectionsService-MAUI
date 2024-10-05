@@ -8,6 +8,7 @@
 
 ## Run the application in your Mobile Device
 
-![image](https://github.com/user-attachments/assets/cc5598aa-d8ab-4817-9412-20a4b45fc4c2)
+![image](https://github.com/user-attachments/assets/beedeaef-29c0-4f5f-a6e5-b7418d92292e)
+
 
 
