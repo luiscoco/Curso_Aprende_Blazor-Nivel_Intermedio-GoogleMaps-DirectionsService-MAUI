@@ -1,0 +1,66 @@
+﻿@page "/googleMaps"
+
+@inject IJSRuntime JSRuntime
+
+<h3>Google Maps with Geolocation</h3>
+
+<div id="floating-panel">
+    <b>Start: </b>
+    <select id="start">
+        <option value="penn station, new york, ny">Penn Station</option>
+        <option value="grand central station, new york, ny">
+            Grand Central Station
+        </option>
+        <option value="625 8th Avenue, New York, NY, 10018">
+            Port Authority Bus Terminal
+        </option>
+        <option value="staten island ferry terminal, new york, ny">
+            Staten Island Ferry Terminal
+        </option>
+        <option value="101 E 125th Street, New York, NY">
+            Harlem - 125th St Station
+        </option>
+    </select>
+    <b>End: </b>
+    <select id="end">
+        <option value="260 Broadway New York NY 10007">City Hall</option>
+        <option value="W 49th St & 5th Ave, New York, NY 10020">
+            Rockefeller Center
+        </option>
+        <option value="moma, New York, NY">MOMA</option>
+        <option value="350 5th Ave, New York, NY, 10118">
+            Empire State Building
+        </option>
+        <option value="253 West 125th Street, New York, NY">
+            Apollo Theater
+        </option>
+        <option value="1 Wall St, New York, NY">Wall St</option>
+    </select>
+</div>
+
+<!-- This is the missing element to display warnings -->
+<div id="warnings-panel" style="color: red;"></div>
+
+<div id="map-container">
+    <div id="map" style="height: 400px; width: 100%;"></div>
+</div>
+
+<!-- Button to trigger geolocation and center the map -->
+<button class="btn btn-primary" @onclick="PanToCurrentLocation">Pan to Current Location</button>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Call the JS function to initialize the map when the page first renders
+            await JSRuntime.InvokeVoidAsync("initMap");
+        }
+    }
+
+    private async Task PanToCurrentLocation()
+    {
+        // Optionally, call this to re-pan to the user's location
+        await JSRuntime.InvokeVoidAsync("panToCurrentLocation");
+    }
+}
