@@ -1,10 +1,12 @@
 # How to draw a GoogleMaps Route in a MAUI Blazor application
 
+## 1. Create a new MAUI Blazor application in Visual Studio 2022 Community Edition
+
 Please refer to this publication for setting up yout environment:
 
 https://github.com/luiscoco/Curso_Aprende_Blazor-Nivel_Intermedio-GoogleMaps-SimpleMap-MAUI
 
-## 1. Create a new JavaScript file
+## 2. Create a new JavaScript file
 
 ![image](https://github.com/user-attachments/assets/4ad77a31-ec58-40ef-b301-2c7c531d18fd)
 
@@ -99,7 +101,7 @@ function handleLocationError(browserHasGeolocation, pos) {
 }
 ```
 
-## 2. Include the JavaScript file reference in the index.html file
+## 3. Include the JavaScript file reference in the index.html file
 
 Include this code in the index.html
 
@@ -107,7 +109,7 @@ Include this code in the index.html
 <script src="googlemaps.js"></script>
 ```
 
-## 3. Include the Google Maps API reference in the index.html file
+## 4. Include the Google Maps API reference in the index.html file
 
 Include this code in the index.html 
 
@@ -116,7 +118,44 @@ Include this code in the index.html
         defer></script>
 ```
 
+See the modified **index.html** file:
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>MAUI_GoogleMaps_SimpleMap</title>
+    <base href="/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="MAUI_GoogleMaps_SimpleMap.styles.css" />
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+
+    <div class="status-bar-safe-area"></div>
+
+    <div id="app">Loading...</div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.webview.js" autostart="false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoENaJ45__VPv8SBlkZM6F4ehh0peXMAQ"
+            defer></script>
+    <script src="googlemaps.js"></script>
+
+
+</body>
+
+</html>
+```
 
 ## Run the appplication in Windows Desktop
 
