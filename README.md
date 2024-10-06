@@ -118,6 +118,8 @@ Include this code in the index.html
         defer></script>
 ```
 
+For creating the **Google Maps API Key** see this publication for more info: https://github.com/luiscoco/Curso_Aprende_Blazor-Nivel_Intermedio-GoogleMaps-SimpleMap-MAUI
+
 See the modified **index.html** file:
 
 ```html
@@ -157,13 +159,94 @@ See the modified **index.html** file:
 </html>
 ```
 
-## Run the appplication in Windows Desktop
+## 5. Create a new razor component for the Google Map
+
+See the new **GoogleMaps.razor** component
+
+![image](https://github.com/user-attachments/assets/662a08b3-3b03-45b7-8acf-1021f165d4d8)
+
+Add this code in the **GoogleMaps.razor**
+
+```razor
+@page "/googleMaps"
+
+@inject IJSRuntime JSRuntime
+
+<h3>Google Maps with Geolocation</h3>
+
+<div id="floating-panel">
+    <b>Start: </b>
+    <select id="start">
+        <option value="penn station, new york, ny">Penn Station</option>
+        <option value="grand central station, new york, ny">
+            Grand Central Station
+        </option>
+        <option value="625 8th Avenue, New York, NY, 10018">
+            Port Authority Bus Terminal
+        </option>
+        <option value="staten island ferry terminal, new york, ny">
+            Staten Island Ferry Terminal
+        </option>
+        <option value="101 E 125th Street, New York, NY">
+            Harlem - 125th St Station
+        </option>
+    </select>
+    <b>End: </b>
+    <select id="end">
+        <option value="260 Broadway New York NY 10007">City Hall</option>
+        <option value="W 49th St & 5th Ave, New York, NY 10020">
+            Rockefeller Center
+        </option>
+        <option value="moma, New York, NY">MOMA</option>
+        <option value="350 5th Ave, New York, NY, 10118">
+            Empire State Building
+        </option>
+        <option value="253 West 125th Street, New York, NY">
+            Apollo Theater
+        </option>
+        <option value="1 Wall St, New York, NY">Wall St</option>
+    </select>
+</div>
+
+<!-- This is the missing element to display warnings -->
+<div id="warnings-panel" style="color: red;"></div>
+
+<div id="map-container">
+    <div id="map" style="height: 400px; width: 100%;"></div>
+</div>
+
+<!-- Button to trigger geolocation and center the map -->
+<button class="btn btn-primary" @onclick="PanToCurrentLocation">Pan to Current Location</button>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Call the JS function to initialize the map when the page first renders
+            await JSRuntime.InvokeVoidAsync("initMap");
+        }
+    }
+
+    private async Task PanToCurrentLocation()
+    {
+        // Optionally, call this to re-pan to the user's location
+        await JSRuntime.InvokeVoidAsync("panToCurrentLocation");
+    }
+}
+```
+
+## 6. Run the appplication in Windows Desktop
+
+See this publication for more info: https://github.com/luiscoco/Curso_Aprende_Blazor-Nivel_Intermedio-GoogleMaps-SimpleMap-MAUI
 
 ![image](https://github.com/user-attachments/assets/62063706-4e70-4326-97ab-08d7a929d790)
 
 ![image](https://github.com/user-attachments/assets/87fafb54-ed3e-4413-a6fe-234fde4d6955)
 
-## Run the application in your Mobile Device
+## 7. Run the application in your Mobile Device
+
+See this publication for more info: https://github.com/luiscoco/Curso_Aprende_Blazor-Nivel_Intermedio-GoogleMaps-SimpleMap-MAUI
 
 ![image](https://github.com/user-attachments/assets/beedeaef-29c0-4f5f-a6e5-b7418d92292e)
 
